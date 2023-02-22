@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-rails-example-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: rails-app
+  template:
+    metadata:
+      labels:
+        app: rails-app
+    spec:
+      containers:
+      - name: rails-app
+        image: acant/kubernetes-rails-example:latest
+        env:
+        - name: EXAMPLE
+          value: This env variable is defined by Kubernetes.
+        ports:
+          - containerPort: 3000

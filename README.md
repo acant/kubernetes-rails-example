@@ -3,22 +3,17 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+```
+docker build -t acant/kubernetes-rails-example:latest .
+docker push acant/kubernetes-rails-example:latest
 
-* Ruby version
+kubectl apply -f config/kube
 
-* System dependencies
+kubectl get deployments
 
-* Configuration
+kubectl get pods
 
-* Database creation
+kubectl delete deployments kubernetes-rails-example-deployment
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+kubectl rollout restart deployment kubernetes-rails-example-deployment
+```
